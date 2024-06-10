@@ -1,0 +1,139 @@
+---
+title: "Introduction to R Markdown"
+author: "Sabrina Nardin"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+---
+
+
+## Definition of R Markdown
+
+An R Markdown file is a plain text file that uses the extension `.Rmd` or `.rmd`
+
+It is based on the widely used Markdown syntax, with extension `.md`, that goes beyond R. See this [Markdown Guide](https://www.markdownguide.org/getting-started/) and the official [R Markdown page](https://rmarkdown.rstudio.com/index.html) for more.
+
+An R Markdown file contains three major components:
+
+* A YAML header surrounded by `---` 
+* Chunks of R code surrounded by triple-backticks ```
+* Text and text formatting options using the Markdown syntax
+  
+Two main reasons to use R Markdown files rather than plain R scripts: 
+
+1. Everything is in one place: R Markdown enables the creation of well-formatted documents (HTML, PDF, Word, etc.) that integrate text, code, and output. This makes R Markdown more powerful and versatile than plain R scripts, particularly for course assignments, research reports, and other comprehensive documents. You can specify the type of output document in the metadata at the beginning of the file, such as `output: html_document`, `output: pdf_document`, or `output: word_document`, and so on. You can also "knit" the file to the desired format. 
+
+2. Reproducibility: R Markdown files will not compile if there are errors in the code, even minor ones like a missing comma. Although this can sometimes be frustrating, it ensures that the document contains code that can be successfully run and replicated. This guarantees that your analysis is reproducible and reliable, as the document must be error-free to generate the desired output.
+
+
+## Create R Markdown documents
+
+To create a `.Rmd` file go to File > New File > R Markdown... A new tab will open. I suggest to click the button that says "Create Empty Document". This will open an empty `.Rmd` document. In that document, add a YAML header at the top, then write your code and text. 
+
+The YAML header provides essential information about your document such as title, author, and output but more elements can be added. You can find more details and additional elements to include in the YAML header [here](https://zsmith27.github.io/rmarkdown_crash-course/lesson-4-yaml-headers.html) and in the assigned readings. 
+Once you are done writing your code and text, you need to render or "knit” your  `.Rmd` document. There are several ways to do this:
+
+* by checking the "Knit on Save" option and then saving the document
+* by clicking the “Knit” button in the toolbar
+* by running the command `rmarkdown::render("example.Rmd")` in your Console, as explained [here](https://pkgs.rstudio.com/rmarkdown/reference/render.html). You can specify the type of output document (PDF, HTML, markdown, etc.) in the YAML header or directly in the render command. For example, to render an HTML document, use: `rmarkdown::render("your_document_title.Rmd", output_format = "html_document"`)
+
+Remember that the R Markdown document won't render if there are errors in the code! And that if you are NOT using R Workbench, you need to install the required packages first^[If you are using R from your machine (VS R Workbench) make sure you have the required packages installed: install the "rmarkdown" package and LaTex by typing `install.packages("rmarkdown")` and `install.packages("tinytex")` in your console. See [here](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html) for more].
+
+
+## Basic syntax
+
+Below is a review of the most common Markdown syntax elements. For more information, refer to the assigned readings, especially the [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for quick reference and [R Markdown the definitive Guide](https://bookdown.org/yihui/rmarkdown/) for a more in-depth explanation.
+
+
+### Formatting text
+
+Headers: use `#` for the main title, `##` for a smaller title, etc. 
+
+Italics: either use `*` or `_` before and after the *section to be written in italics* 
+
+Bold: either use `**` or `__` before and after the **section to be written in bold** 
+
+Footnotes: use `^` with the following text in brackets, like^[this text is going to be placed at the end of the page as a footnote] 
+
+To strike through, use `~~` before and after the text to ~~strike through~~ 
+
+
+### Links and pictures
+
+To insert a link, put the linked text in brackets `[]`, followed immediately (e.g., no spaces) by the URL in parentheses `()`. 
+
+For example: [R Studio](https://www.rstudio.com/)
+
+To insert a picture type `![text](put here the path to the picture , "title")`. The title is optional.
+
+
+### Equations 
+
+In line equations are denoted by `$` like in LaTeX. Use `\` to call mathematical symbols or Greek letters. See [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for more. 
+
+For example, `$\sum_{i=1}^{n} \lambda (x_i-\bar{x})$` gives you $\sum_{i=1}^{n} \lambda (x_i-\bar{x})$. Use double `$$` to separate equations from text and center them, e.g., $$\sum_{i=1}^{n} \lambda (x_i-\bar{x})$$ 
+
+
+### Lists
+
+For unordered lists, use `*` or `-`, then a space, and then the text. Note that if there is no space, it will be interpreted as italicized text and not as a list!
+
+* item 1
+* item 2
+* item 3
+
+For ordered lists, write the number followed by a period and a space, then begin writing your text
+
+1. item 1
+2. item 2
+3. item 3
+
+For nested lists (unorderd or ordered), indent once (or twice) on the next line using `+` followed by a space
+
+1. item 1
+    + sub
+        + sub sub
+    + sub
+2. item 2
+3. item 3
+    + sub
+
+
+### Code chunks
+
+R Markdown allows you to directly insert and evaluate R code using code "chunks". To start a chunk, type three backticks ``` followed by the name of the language in curly brackets, and then type your actual code, like that:
+
+```{r}
+print("Hello!")
+```
+
+To type the ``` either:
+
+* use keyboard shortcut Cmd/Ctrl + Alt + I
+* use the “Insert a new code chunk” button in the editor toolbar (the small icon in green) and select "R"
+* manually type them 
+
+You can add comments to your code inside an R code chunk just as you would in a regular R script. Typically, comments use a single pound sign (#), as shown in the example below. In R scripts (but not R Markdown), people might also use multiple pound signs to divide code sections.
+
+Remember that when used inside R Markdown code chunks or in R scripts, pound signs are not treated as headings; they are simply code comments. For example:
+
+```{r}
+# this is a comment
+x <- 2 + 3
+x * 2 
+```
+
+You can control how your code and text are displayed in the final rendered document. For example, if you add `echo = FALSE` as shown below, the rendered document will hide the actual code and display only its output. For this course, please leave it as the default (`echo = TRUE`) so that both the code and its output are visible.
+
+```{r echo = FALSE}
+print("Hello!")
+```
+
+There are many options to manage your code (e.g., `eval`, `include`, etc.). For more, see our slides (lecture 1) and [Chapter 27](https://r4ds.had.co.nz/r-markdown.html#r-markdown) of "R for Data Science" 1st Edition
+
+
+## In-class practice
+
+* Modify three elements of your choice from this document, render the document, and observe the changes.
+* Create a new R Markdown document as an empty document. Add a YAML header with a title and your preferred output format. Then, incorporate some of the elements explained in this tutorial, such as a list, a code chunk, etc. 
