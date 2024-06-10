@@ -38,8 +38,7 @@ Once you are done writing your code and text, you need to render or "knit” you
 * by clicking the “Knit” button in the toolbar
 * by running the command `rmarkdown::render("example.Rmd")` in your Console, as explained [here](https://pkgs.rstudio.com/rmarkdown/reference/render.html). You can specify the type of output document (PDF, HTML, markdown, etc.) in the YAML header or directly in the render command. For example, to render an HTML document, use: `rmarkdown::render("your_document_title.Rmd", output_format = "html_document"`)
 
-Remember that the R Markdown document won't render if there are errors in the code! And that if you are NOT using R Workbench, you need to install the required packages first^[If you are using R from your machine (VS R Workbench) make sure you have the required packages installed: install the "rmarkdown" package and LaTex by typing `install.packages("rmarkdown")` and `install.packages("tinytex")` in your console. See [here](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html) for more].
-
+Remember that the R Markdown document won't render if there are errors in the code! And that if you are NOT using R Workbench, you need to install the required packages first[^install]
 
 ## Basic syntax
 
@@ -137,3 +136,5 @@ There are many options to manage your code (e.g., `eval`, `include`, etc.). For 
 
 * Modify three elements of your choice from this document, render the document, and observe the changes.
 * Create a new R Markdown document as an empty document. Add a YAML header with a title and your preferred output format. Then, incorporate some of the elements explained in this tutorial, such as a list, a code chunk, etc. 
+
+[^install]: If you are using R from your machine (VS R Workbench) make sure you have the required packages installed: install the "rmarkdown" package and LaTex by typing `install.packages("rmarkdown")` and `install.packages("tinytex")` in your console. See [here](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html) for more].
