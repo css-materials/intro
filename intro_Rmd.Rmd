@@ -40,9 +40,12 @@ Once you are done writing your code and text, you need to render or "knit” you
 
 Remember that the R Markdown document won't render if there are errors in the code! And that if you are NOT using R Workbench, you need to install the required packages first[^install]
 
+
 ## Basic syntax
 
-Below is a review of the most common Markdown syntax elements. For more information, refer to the assigned readings, especially the [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for quick reference and [R Markdown the definitive Guide](https://bookdown.org/yihui/rmarkdown/) for a more in-depth explanation.
+Below is a review of the most common Markdown syntax elements. 
+
+For more information, refer to today's slides and readings, especially the [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for quick reference and [R Markdown the definitive Guide](https://bookdown.org/yihui/rmarkdown/) for a more in-depth explanation.
 
 
 ### Formatting text
@@ -135,6 +138,7 @@ There are many options to manage your code (e.g., `eval`, `include`, etc.). For 
 ## In-class practice
 
 * Modify three elements of your choice from this document, render the document, and observe the changes.
+
 * Create a new R Markdown document as an empty document. Add a YAML header with a title and your preferred output format. Then, incorporate some of the elements explained in this tutorial, such as a list, a code chunk, etc. 
 
 [^install]: If you are using R from your machine (VS R Workbench) make sure you have the required packages installed: install the "rmarkdown" package and LaTex by typing `install.packages("rmarkdown")` and `install.packages("tinytex")` in your console. See [here](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html) for more].
